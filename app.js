@@ -7,13 +7,13 @@ function computerPlay() {
   let computerPick;
   switch (randomNum) {
     case 1:
-      computerPick = "Rock";
+      computerPick = "rock";
       break;
     case 2:
-      computerPick = "Paper";
+      computerPick = "paper";
       break;
     case 3:
-      computerPick = "Scissors";
+      computerPick = "scissors";
       break;
   }
 
@@ -28,22 +28,22 @@ function playRound(playerSelection, computerSelection) {
   // Compare player and computer picks and determine the winner
   if (playerSelection === computerSelection) {
     console.log(`It's a tie! You both chose ${playerSelection}.`)
-  } else if (playerSelection === "Rock" && computerSelection === "Paper") {
+  } else if (playerSelection === "rock" && computerSelection === "paper") {
     computerScore++;
     console.log("You lose! Paper beats Rock.")
-  } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
     playerScore++;
     console.log("You win! Rock beats Scissors.")
-  } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
     playerScore++;
     console.log("You win! Paper beats Rock.")
-  } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+  } else if (playerSelection === "paper" && computerSelection === "scissors") {
     computerScore++;
     console.log("You lose! Scissors beats Paper.")
-  } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
     computerScore++;
     console.log("You lose! Rock beats Scissors")
-  } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerScore++;
     console.log("You win! Scissors beats Paper.")
   }
@@ -58,8 +58,8 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   // Play 5 rounds of Rock Paper Scissors
   for (let i = 0; i < 5; i++) {
-    const playerSelection = window.prompt("Rock, Paper or Scissors?");
-
+    const playerPrompt = window.prompt("Rock, Paper or Scissors?");
+    const playerSelection = playerPrompt.toLowerCase()
     playRound(playerSelection, computerPlay())
   }
 
