@@ -1,3 +1,7 @@
+let playerScore = 0;
+let computerScore = 0;
+
+
 // write a function that randomly returns either "Rock", "Paper" or "Scissors"
 function computerPlay() {
   // pick a number between 1 and 3
@@ -21,10 +25,9 @@ function computerPlay() {
   return computerPick;
 }
 
+
 // Write a function that plays a single round of Rock Paper Scissors
 function playRound(playerSelection, computerSelection) {
-  // Score counter
-
   // Compare player and computer picks and determine the winner
   if (playerSelection === computerSelection) {
     console.log(`It's a tie! You both chose ${playerSelection}.`)
@@ -52,8 +55,6 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-
-
 // Write a function that plays 5 rounds of Rock Paper Scissors and reports a winner and loser at the end
 function game() {
   // Play 5 rounds of Rock Paper Scissors
@@ -73,7 +74,6 @@ function game() {
   }
 }
 
-let playerScore = 0;
-let computerScore = 0;
 
+// Play the game!
 game();
