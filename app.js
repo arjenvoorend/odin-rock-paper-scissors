@@ -82,11 +82,19 @@ function playRound(playerSelection, computerSelection) {
 
 // Display user and computer picks
 function displayPicks() {
-  playerChoice.innerText = `Your pick: ${playerSelection}`
-  computerChoice.innerText = `Computer pick: ${computerSelection}`
+  const playerValue = capitalize(playerSelection)
+  const computerValue = capitalize(computerSelection)
+  playerChoice.innerText = `Your pick: ${playerValue}`
+  computerChoice.innerText = `Computer pick: ${computerValue}`
   displaySelection.appendChild(playerChoice)
   displaySelection.appendChild(computerChoice);
   displaySelection.appendChild(selectionResult);
+}
+
+
+// Capitalize picks
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 
