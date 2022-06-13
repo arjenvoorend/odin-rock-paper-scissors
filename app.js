@@ -2,8 +2,12 @@ let playerScore = 0;
 let computerScore = 0;
 let gamesPlayed = 0;
 let playerSelection;
+let computerSelection;
 
 const btns = document.querySelectorAll('button');
+const displaySelection = document.querySelector('#display-selection');
+const playerChoice = document.createElement('p');
+const computerChoice = document.createElement('p');
 const displayResults = document.querySelector('#display-results');
 const results = document.createElement('p');
 
@@ -65,7 +69,18 @@ function playRound(playerSelection, computerSelection) {
   }
   console.log(`player score: ${playerScore}`)
   console.log(`computer score: ${computerScore}`)
+
   displayScore();
+  displayPicks();
+}
+
+
+// Display user and computer picks
+function displayPicks() {
+  playerChoice.innerText = `Your pick: ${playerSelection}`
+  computerChoice.innerText = `Computer pick: ${computerSelection}`
+  displaySelection.appendChild(playerChoice)
+  displaySelection.appendChild(computerChoice);
 }
 
 
@@ -103,8 +118,9 @@ function disableBtns() {
 
 // Play the game!
 function game() {
+  computerSelection = computerPlay();
 
-  playRound(playerSelection, computerPlay());
+  playRound(playerSelection, computerSelection);
   gamesPlayed++;
   gameOver();
 }
