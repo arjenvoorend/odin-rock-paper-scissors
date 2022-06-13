@@ -54,7 +54,8 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   // Compare player and computer picks and determine the winner
   if (playerSelection === computerSelection) {
-    selectionResult.innerText = `It's a tie! You both chose ${playerSelection}.`
+    let playerValue = capitalize(playerSelection)
+    selectionResult.innerText = `It's a tie! You both chose ${playerValue}.`
   } else if (playerSelection === "rock" && computerSelection === "paper") {
     computerScore++;
     selectionResult.innerText = "You lose! Paper beats Rock."
@@ -82,8 +83,8 @@ function playRound(playerSelection, computerSelection) {
 
 // Display user and computer picks
 function displayPicks() {
-  const playerValue = capitalize(playerSelection)
-  const computerValue = capitalize(computerSelection)
+  let playerValue = capitalize(playerSelection)
+  let computerValue = capitalize(computerSelection)
   playerChoice.innerText = `Your pick: ${playerValue}`
   computerChoice.innerText = `Computer pick: ${computerValue}`
   displaySelection.appendChild(playerChoice)
