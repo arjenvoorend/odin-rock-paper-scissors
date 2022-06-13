@@ -8,6 +8,7 @@ const btns = document.querySelectorAll('button');
 const displaySelection = document.querySelector('#display-selection');
 const playerChoice = document.createElement('p');
 const computerChoice = document.createElement('p');
+const selectionResult = document.createElement('p');
 const displayResults = document.querySelector('#display-results');
 const results = document.createElement('p');
 
@@ -47,28 +48,27 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   // Compare player and computer picks and determine the winner
   if (playerSelection === computerSelection) {
-    console.log(`It's a tie! You both chose ${playerSelection}.`)
+    selectionResult.innerText = `It's a tie! You both chose ${playerSelection}.`
   } else if (playerSelection === "rock" && computerSelection === "paper") {
     computerScore++;
-    console.log("You lose! Paper beats Rock.")
+    selectionResult.innerText = "You lose! Paper beats Rock."
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
     playerScore++;
-    console.log("You win! Rock beats Scissors.")
+    selectionResult.innerText = "You win! Rock beats Scissors."
   } else if (playerSelection === "paper" && computerSelection === "rock") {
     playerScore++;
-    console.log("You win! Paper beats Rock.")
+    selectionResult.innerText = "You win! Paper beats Rock."
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
     computerScore++;
-    console.log("You lose! Scissors beats Paper.")
+    selectionResult.innerText = "You lose! Scissors beats Paper."
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
     computerScore++;
-    console.log("You lose! Rock beats Scissors")
+    selectionResult.innerText = "You lose! Rock beats Scissors"
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerScore++;
-    console.log("You win! Scissors beats Paper.")
+    selectionResult.innerText = "You win! Scissors beats Paper."
   }
-  console.log(`player score: ${playerScore}`)
-  console.log(`computer score: ${computerScore}`)
+
 
   displayScore();
   displayPicks();
@@ -81,6 +81,7 @@ function displayPicks() {
   computerChoice.innerText = `Computer pick: ${computerSelection}`
   displaySelection.appendChild(playerChoice)
   displaySelection.appendChild(computerChoice);
+  displaySelection.appendChild(selectionResult);
 }
 
 
