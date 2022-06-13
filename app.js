@@ -19,7 +19,6 @@ const displayResults = document.querySelector('#display-results');
 const results = document.createElement('p');
 
 
-
 // Add event listeners for player choice
 btns.forEach(button => button.addEventListener('click', () => {
   playerSelection = button.id;
@@ -75,7 +74,6 @@ function playRound(playerSelection, computerSelection) {
     playerScore++;
     selectionResult.innerText = "You win! Scissors beats Paper."
   }
-
 
   displayScore();
   displayPicks();
@@ -154,11 +152,12 @@ function newGame() {
 // Play the game!
 function game() {
   computerSelection = computerPlay();
-
   playRound(playerSelection, computerSelection);
   gamesPlayed++;
+
   gameOver();
 }
 
 
+// Render initial score to the screen
 displayScore();
