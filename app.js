@@ -1,13 +1,24 @@
 let playerScore = 0;
 let computerScore = 0;
+let gamesPlayed = 0;
+let playerSelection;
 
+const btns = document.querySelectorAll('button');
+const displayResults = document.querySelector('#display-results');
+const results = document.createElement('p');
 
-// write a function that randomly returns either "Rock", "Paper" or "Scissors"
+// Add event listeners for player choice
+btns.forEach(button => button.addEventListener('click', () => {
+  playerSelection = button.id;
+  game();
+}));
+
+// Write a function that randomly returns either "Rock", "Paper" or "Scissors"
 function computerPlay() {
   // pick a number between 1 and 3
   const randomNum = Math.floor(Math.random() * 3) + 1;
 
-  // assign computer's random choice of "Rock", "Paper", "Scissors" to numbers 1, 2, 3
+  // Assign computer's random choice of "Rock", "Paper", "Scissors" to numbers 1, 2, 3
   let computerPick;
   switch (randomNum) {
     case 1:
@@ -26,7 +37,7 @@ function computerPlay() {
 }
 
 
-// Write a function that plays a single round of Rock Paper Scissors
+// Play a single round of Rock Paper Scissors
 function playRound(playerSelection, computerSelection) {
   // Compare player and computer picks and determine the winner
   if (playerSelection === computerSelection) {
@@ -54,26 +65,34 @@ function playRound(playerSelection, computerSelection) {
   console.log(`computer score: ${computerScore}`)
 }
 
+// Check for game over (5 games played) and announce results
+function gameOver() {
+  if (gamesPlayed === 5) {
+    if (playerScore > computerScore) {
+      results.innerText = "Game over, you win!"
+    } else if (playerScore < computerScore) {
+      results.innerText = "Game over, you lose!"
+    } else {
+      results.innerText = "Game over, it's a tie!"
+    }
 
-// Write a function that plays 5 rounds of Rock Paper Scissors and reports a winner and loser at the end
-function game() {
-  // Play 5 rounds of Rock Paper Scissors
-  for (let i = 0; i < 5; i++) {
-    const playerPrompt = window.prompt("Rock, Paper or Scissors?");
-    const playerSelection = playerPrompt.toLowerCase()
-    playRound(playerSelection, computerPlay())
+    displayResults.appendChild(results)
+    disableBtns();
   }
+}
 
-  // Announce the winner
-  if (playerScore > computerScore) {
-    console.log("Game over, you win!")
-  } else if (playerScore < computerScore) {
-    console.log("Game over, you lose!")
-  } else {
-    console.log("Game over, it's a tie!")
+// Disable player choice buttons if game over
+function disableBtns() {
+  if (gameOver) {
+    btns.forEach(button => button.disabled = true)
   }
 }
 
 
 // Play the game!
-game();
+function game() {
+
+  playRound(playerSelection, computerPlay());
+  gamesPlayed++;
+  gameOver();
+}
