@@ -7,11 +7,13 @@ const btns = document.querySelectorAll('button');
 const displayResults = document.querySelector('#display-results');
 const results = document.createElement('p');
 
+
 // Add event listeners for player choice
 btns.forEach(button => button.addEventListener('click', () => {
   playerSelection = button.id;
   game();
 }));
+
 
 // Write a function that randomly returns either "Rock", "Paper" or "Scissors"
 function computerPlay() {
@@ -63,7 +65,16 @@ function playRound(playerSelection, computerSelection) {
   }
   console.log(`player score: ${playerScore}`)
   console.log(`computer score: ${computerScore}`)
+  displayScore();
 }
+
+
+// Display user and computer score
+function displayScore() {
+  document.querySelector('#player-score').innerText = playerScore;
+  document.querySelector('#computer-score').innerText = computerScore;
+}
+
 
 // Check for game over (5 games played) and announce results
 function gameOver() {
@@ -81,6 +92,7 @@ function gameOver() {
   }
 }
 
+
 // Disable player choice buttons if game over
 function disableBtns() {
   if (gameOver) {
@@ -96,3 +108,6 @@ function game() {
   gamesPlayed++;
   gameOver();
 }
+
+
+displayScore();
