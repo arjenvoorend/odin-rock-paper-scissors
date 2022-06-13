@@ -4,13 +4,20 @@ let gamesPlayed = 0;
 let playerSelection;
 let computerSelection;
 
+const gameBtns = document.querySelector('.game-buttons');
 const btns = document.querySelectorAll('button');
+const newGameBtn = document.createElement('button');
+newGameBtn.innerText = "New Game";
+newGameBtn.addEventListener('click', newGame);
+
 const displaySelection = document.querySelector('#display-selection');
 const playerChoice = document.createElement('p');
 const computerChoice = document.createElement('p');
 const selectionResult = document.createElement('p');
+
 const displayResults = document.querySelector('#display-results');
 const results = document.createElement('p');
+
 
 
 // Add event listeners for player choice
@@ -105,6 +112,7 @@ function gameOver() {
 
     displayResults.appendChild(results)
     disableBtns();
+    gameBtns.appendChild(newGameBtn);
   }
 }
 
@@ -114,6 +122,32 @@ function disableBtns() {
   if (gameOver) {
     btns.forEach(button => button.disabled = true)
   }
+}
+
+
+// Enable player choice buttons if new game
+function enableBtns() {
+  if (newGame) {
+    btns.forEach(button => button.disabled = false)
+  }
+}
+
+
+// Reset all parameters for a new game
+function newGame() {
+  playerScore = 0;
+  computerScore = 0;
+  gamesPlayed = 0;
+
+  displayScore();
+
+  displayResults.removeChild(results);
+  displaySelection.removeChild(playerChoice);
+  displaySelection.removeChild(computerChoice);
+  displaySelection.removeChild(selectionResult);
+
+  enableBtns();
+  gameBtns.removeChild(newGameBtn);
 }
 
 
