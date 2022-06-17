@@ -3,6 +3,7 @@ let computerScore = 0;
 let gamesPlayed = 0;
 let playerSelection;
 let computerSelection;
+let roundWinner;
 
 const gameBtns = document.querySelector('.game-buttons');
 const btns = document.querySelectorAll('button');
@@ -29,9 +30,9 @@ btns.forEach(button => button.addEventListener('click', () => {
 // Write a function that randomly returns either "Rock", "Paper" or "Scissors"
 function computerPlay() {
   // pick a number between 1 and 3
-  const randomNum = Math.floor(Math.random() * 3) + 1;
+  const randomNum = Math.floor(Math.random() * 5) + 1;
 
-  // Assign computer's random choice of "Rock", "Paper", "Scissors" to numbers 1, 2, 3
+  // Assign computer's random choice of "Rock", "Paper", "Scissors", "Lizard", "Spock" to numbers 1, 2, 3,4,5
   let computerPick;
   switch (randomNum) {
     case 1:
@@ -43,6 +44,12 @@ function computerPlay() {
     case 3:
       computerPick = "scissors";
       break;
+    case 4:
+      computerPick = "lizard";
+      break;
+    case 5:
+      computerPick = 'spock';
+      break;
   }
 
   // return the chosen value
@@ -50,32 +57,122 @@ function computerPlay() {
 }
 
 
-// Play a single round of Rock Paper Scissors
+// Play a single round of Rock, Paper, Scissors, Lizard, Spock
 function playRound(playerSelection, computerSelection) {
-  // Compare player and computer picks and determine the winner
-  if (playerSelection === computerSelection) {
-    let playerValue = capitalize(playerSelection)
-    selectionResult.innerText = `It's a tie! You both chose ${playerValue}.`
-  } else if (playerSelection === "rock" && computerSelection === "paper") {
-    computerScore++;
-    selectionResult.innerText = "You lose! Paper beats Rock."
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    playerScore++;
-    selectionResult.innerText = "You win! Rock beats Scissors."
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
-    playerScore++;
-    selectionResult.innerText = "You win! Paper beats Rock."
-  } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    computerScore++;
-    selectionResult.innerText = "You lose! Scissors beats Paper."
-  } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    computerScore++;
-    selectionResult.innerText = "You lose! Rock beats Scissors"
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    playerScore++;
-    selectionResult.innerText = "You win! Scissors beats Paper."
+  let capitalizedPlayerSelection = capitalize(playerSelection);
+  let capitalizedComputerSelection = capitalize(computerSelection);
+
+  switch (capitalizedPlayerSelection) {
+    // Handle player chooses Rock
+    case ('Rock'):
+      // Handle Rock wins
+      if (capitalizedComputerSelection === 'Scissors' || capitalizedComputerSelection === 'Lizard') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} crushes ${capitalizedComputerSelection}.`
+        playerScore++;
+        // Handle Rock losses
+      } else if (capitalizedComputerSelection === 'Paper') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} covers ${capitalizedPlayerSelection}.`
+        computerScore++;
+      } else if (capitalizedComputerSelection === 'Spock') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} vaporizes ${capitalizedPlayerSelection}.`
+        computerScore++;
+        // Handle Rock Ties
+      } else if (capitalizedComputerSelection === 'Rock') {
+        selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+      };
+      break;
+
+    // Handle player chooses Paper
+    case ('Paper'):
+      // Handle Paper wins
+      if (capitalizedComputerSelection === 'Rock') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} covers ${capitalizedComputerSelection}.`
+        playerScore++;
+      } else if (capitalizedComputerSelection === 'Spock') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} disproves ${capitalizedComputerSelection}.`
+        playerScore++;
+        // Handle Paper losses
+      } else if (capitalizedComputerSelection === 'Scissors') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} cuts ${capitalizedPlayerSelection}.`
+        computerScore++;
+      } else if (capitalizedComputerSelection === 'Lizard') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} eats ${capitalizedPlayerSelection}.`
+        computerScore++;
+        // Handle Paper Ties
+      } else if (capitalizedComputerSelection === 'Paper}') {
+        selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+      };
+      break;
+
+    // Handle player chooses Scissors
+    case ('Scissors'):
+      // Handle Scissors wins
+      if (capitalizedComputerSelection === 'Paper') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} cuts ${capitalizedComputerSelection}.`
+        playerScore++;
+      } else if (capitalizedComputerSelection === 'Lizard') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} decapitates ${capitalizedComputerSelection}.`
+        playerScore++;
+        // Handle Scissors losses
+      } else if (capitalizedComputerSelection === 'Rock') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} crushes ${capitalizedPlayerSelection}.`
+        computerScore++;
+      } else if (capitalizedComputerSelection === 'Spock') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} smashes ${capitalizedPlayerSelection}.`
+        computerScore++;
+        // Handle Scissors Ties
+      } else if (capitalizedComputerSelection === 'Scissors') {
+        selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+      };
+      break;
+
+    // Handle player chooses Lizard
+    case ('Lizard'):
+      // Handle Lizard wins
+      if (capitalizedComputerSelection === 'Paper') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} eats ${capitalizedComputerSelection}.`
+        playerScore++;
+      } else if (capitalizedComputerSelection === 'Spock') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} poisons ${capitalizedComputerSelection}.`
+        playerScore++;
+        // Handle Lizard losses
+      } else if (capitalizedComputerSelection === 'Rock') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} crushes ${capitalizedPlayerSelection}.`
+        computerScore++;
+      } else if (capitalizedComputerSelection === 'Scissors') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} decapitates ${capitalizedPlayerSelection}.`
+        computerScore++;
+        // Handle Lizard Ties
+      } else if (capitalizedComputerSelection === 'Lizard') {
+        selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+      };
+      break;
+
+    // Handle player chooses Spock
+    case ('Spock'):
+      // Handle Spock wins
+      if (capitalizedComputerSelection === 'Rock') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} vaporizes ${capitalizedComputerSelection}.`
+        playerScore++;
+      } else if (capitalizedComputerSelection === 'Scissors') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} smashes ${capitalizedComputerSelection}.`
+        playerScore++;
+        // Handle Spock losses
+      } else if (capitalizedComputerSelection === 'Lizard') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} poisons ${capitalizedPlayerSelection}.`
+        computerScore++;
+      } else if (capitalizedComputerSelection === 'Paper') {
+        selectionResult.innerText = `You lose! ${capitalizedComputerSelection} disproves ${capitalizedPlayerSelection}.`
+        computerScore++;
+        // Handle Spock Ties
+      } else if (capitalizedComputerSelection === 'Spock') {
+        selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+      };
+      break;
   }
 
+  renderImg('player', playerSelection);
+  renderImg('computer', computerSelection);
   displayScore();
   displayPicks();
 }
@@ -170,3 +267,13 @@ function game() {
 
 // Render initial score to the screen
 displayScore();
+
+
+// Render img to the screen
+function renderImg(player, selection) {
+  let selected = capitalize(selection);
+  let elem = document.createElement('img');
+  elem.setAttribute('src', `IMG/${selected}.svg`)
+  elem.classList.add("showing")
+  document.querySelector(`#show-${player}`).appendChild(elem);
+}
