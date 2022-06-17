@@ -11,14 +11,45 @@
 
 <body>
   <div class="game-container">
-    <div id="current-score">
+    <div class="logo-container">
+      <img src="IMG/Rock.svg" alt="Rock">
+      <img src="IMG/Paper.svg" alt="Paper">
+      <img src="IMG/Scissors.svg" alt="Scissors">
+      <img src="IMG/Lizard.svg" alt="Lizard">
+      <img src="IMG/Spock.svg" alt="Spock">
+      <div id="current-score">
+      </div>
+
       <p>Your score: <span id="player-score"></span></p>
       <p>Computer score: <span id="computer-score"></span></p>
+    </div>
+    <div class="game-display">
+      <div class="player-display">
+        <h2 id="player">You chose</h2>
+        <div id="show-player">
+          <!-- <div class="showing"></div> -->
+        </div>
+      </div>
+      <div class="winner-display">
+        <h2 id="winner">Winner</h2>
+        <div id="show-winner">
+          <!-- <div class="showing"></div> -->
+        </div>
+      </div>
+      <div class="computer-display">
+        <h2 id="computer">Computer chose</h2>
+        <div id="show-computer">
+          <!-- <div class="showing"></div> -->
+        </div>
+      </div>
+
     </div>
     <div class="game-buttons">
       <button id="rock">Rock</button>
       <button id="paper">Paper</button>
       <button id="scissors">Scissors</button>
+      <button id="lizard">Lizard</button>
+      <button id="spock">Spock</button>
     </div>
     <div class="game-info-container">
 
