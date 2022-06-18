@@ -231,6 +231,7 @@ function playRound(playerSelection, computerSelection) {
   renderImg('player', playerSelection);
   renderImg('computer', computerSelection);
   displayScore();
+  displaySelection.appendChild(selectionResult);
 };
 
 
@@ -258,7 +259,7 @@ function gameOver() {
       selectionResult.innerText = "Game over, it's a tie!"
     };
 
-    // displayResults.appendChild(results)
+    displaySelection.appendChild(selectionResult)
     disableBtns();
     newGameBtnContainer.appendChild(newGameBtn);
   };
@@ -296,6 +297,7 @@ function newGame() {
 
   enableBtns();
   newGameBtnContainer.removeChild(newGameBtn);
+  displaySelection.removeChild(selectionResult)
 };
 
 
