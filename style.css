@@ -15,6 +15,7 @@ body {
 .title-heading {
   text-align: center;
   width: 1080px;
+  margin-top: 2em;
 }
 
 .game-container {
