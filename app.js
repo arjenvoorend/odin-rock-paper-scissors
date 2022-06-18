@@ -19,6 +19,9 @@ const selectionResult = document.createElement('p');
 const displayResults = document.querySelector('#display-results');
 const results = document.createElement('p');
 
+const showPlayer = document.querySelector('#show-player');
+const showComputer = document.querySelector('#show-computer');
+const showGameIntro = document.querySelector('#show-game-intro');
 
 // Add event listeners for player choice
 btns.forEach(button => button.addEventListener('click', () => {
@@ -50,17 +53,20 @@ function computerPlay() {
     case 5:
       computerPick = 'spock';
       break;
-  }
+  };
 
   // return the chosen value
   return computerPick;
-}
+};
 
 
 // Play a single round of Rock, Paper, Scissors, Lizard, Spock
 function playRound(playerSelection, computerSelection) {
   let capitalizedPlayerSelection = capitalize(playerSelection);
   let capitalizedComputerSelection = capitalize(computerSelection);
+
+  removeImg(showPlayer);
+  removeImg(showComputer);
 
   switch (capitalizedPlayerSelection) {
     // Handle player chooses Rock
@@ -169,13 +175,13 @@ function playRound(playerSelection, computerSelection) {
         selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
       };
       break;
-  }
+  };
 
   renderImg('player', playerSelection);
   renderImg('computer', computerSelection);
   displayScore();
   displayPicks();
-}
+};
 
 
 // Display user and computer picks
@@ -187,20 +193,20 @@ function displayPicks() {
   displaySelection.appendChild(playerChoice)
   displaySelection.appendChild(computerChoice);
   displaySelection.appendChild(selectionResult);
-}
+};
 
 
 // Capitalize picks
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
-}
+};
 
 
 // Display user and computer score
 function displayScore() {
   document.querySelector('#player-score').innerText = playerScore;
   document.querySelector('#computer-score').innerText = computerScore;
-}
+};
 
 
 // Check for game over (5 games played) and announce results
@@ -212,29 +218,29 @@ function gameOver() {
       results.innerText = "Game over, you lose!"
     } else {
       results.innerText = "Game over, it's a tie!"
-    }
+    };
 
     displayResults.appendChild(results)
     disableBtns();
     gameBtns.appendChild(newGameBtn);
-  }
-}
+  };
+};
 
 
 // Disable player choice buttons if game over
 function disableBtns() {
   if (gameOver) {
     btns.forEach(button => button.disabled = true)
-  }
-}
+  };
+};
 
 
 // Enable player choice buttons if new game
 function enableBtns() {
   if (newGame) {
     btns.forEach(button => button.disabled = false)
-  }
-}
+  };
+};
 
 
 // Reset all parameters for a new game
@@ -244,6 +250,8 @@ function newGame() {
   gamesPlayed = 0;
 
   displayScore();
+  removeImg(showPlayer);
+  removeImg(showComputer);
 
   displayResults.removeChild(results);
   displaySelection.removeChild(playerChoice);
@@ -252,7 +260,7 @@ function newGame() {
 
   enableBtns();
   gameBtns.removeChild(newGameBtn);
-}
+};
 
 
 // Play the game!
@@ -262,7 +270,7 @@ function game() {
   gamesPlayed++;
 
   gameOver();
-}
+};
 
 
 // Render initial score to the screen
@@ -273,7 +281,16 @@ displayScore();
 function renderImg(player, selection) {
   let selected = capitalize(selection);
   let elem = document.createElement('img');
-  elem.setAttribute('src', `IMG/${selected}.svg`)
-  elem.classList.add("showing")
+  elem.setAttribute('src', `IMG/${selected}.svg`);
+  elem.classList.add('showing');
   document.querySelector(`#show-${player}`).appendChild(elem);
-}
+};
+
+
+// Removes rendered img
+function removeImg(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  };
+};
+
