@@ -35,7 +35,34 @@ body {
   width: 100px;
   height: auto;
   margin-top: 2em;
-  /* border: 1px solid blue; */
+}
+
+.round-winner {
+  box-shadow: 0 0 50px green;
+  transform: scale(1.4);
+
+}
+
+.round-loser {
+  box-shadow: 0 0 50px red;
+  transform: scale(0.7);
+}
+
+.round-tie {
+  box-shadow: 0 0 50px yellow;
+}
+
+#show-player,
+#show-computer {
+  margin-top: 2em;
+  padding-bottom: 30px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  /* box-shadow: 0 0 50px green; */
 }
 
 .player-display,

@@ -67,6 +67,8 @@ function playRound(playerSelection, computerSelection) {
 
   removeImg(showPlayer);
   removeImg(showComputer);
+  removeShowRoundHalos(showPlayer);
+  removeShowRoundHalos(showComputer);
 
   switch (capitalizedPlayerSelection) {
     // Handle player chooses Rock
@@ -75,16 +77,24 @@ function playRound(playerSelection, computerSelection) {
       if (capitalizedComputerSelection === 'Scissors' || capitalizedComputerSelection === 'Lizard') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} crushes ${capitalizedComputerSelection}.`
         playerScore++;
+        setTimeout(showRoundWinner, 300, showPlayer);
+        setTimeout(showRoundLoser, 300, showComputer);
         // Handle Rock losses
       } else if (capitalizedComputerSelection === 'Paper') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} covers ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
       } else if (capitalizedComputerSelection === 'Spock') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} vaporizes ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
         // Handle Rock Ties
       } else if (capitalizedComputerSelection === 'Rock') {
         selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+        showRoundTie(showComputer);
+        showRoundTie(showPlayer);
       };
       break;
 
@@ -94,19 +104,29 @@ function playRound(playerSelection, computerSelection) {
       if (capitalizedComputerSelection === 'Rock') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} covers ${capitalizedComputerSelection}.`
         playerScore++;
+        setTimeout(showRoundWinner, 300, showPlayer);
+        setTimeout(showRoundLoser, 300, showComputer);
       } else if (capitalizedComputerSelection === 'Spock') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} disproves ${capitalizedComputerSelection}.`
         playerScore++;
+        setTimeout(showRoundWinner, 300, showPlayer);
+        setTimeout(showRoundLoser, 300, showComputer);
         // Handle Paper losses
       } else if (capitalizedComputerSelection === 'Scissors') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} cuts ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
       } else if (capitalizedComputerSelection === 'Lizard') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} eats ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
         // Handle Paper Ties
       } else if (capitalizedComputerSelection === 'Paper}') {
-        selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+        selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`;
+        showRoundTie(showComputer);
+        showRoundTie(showPlayer);
       };
       break;
 
@@ -116,19 +136,29 @@ function playRound(playerSelection, computerSelection) {
       if (capitalizedComputerSelection === 'Paper') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} cuts ${capitalizedComputerSelection}.`
         playerScore++;
+        setTimeout(showRoundWinner, 300, showPlayer);
+        setTimeout(showRoundLoser, 300, showComputer);
       } else if (capitalizedComputerSelection === 'Lizard') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} decapitates ${capitalizedComputerSelection}.`
         playerScore++;
+        setTimeout(showRoundWinner, 300, showPlayer);
+        setTimeout(showRoundLoser, 300, showComputer);
         // Handle Scissors losses
       } else if (capitalizedComputerSelection === 'Rock') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} crushes ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
       } else if (capitalizedComputerSelection === 'Spock') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} smashes ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
         // Handle Scissors Ties
       } else if (capitalizedComputerSelection === 'Scissors') {
         selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+        showRoundTie(showComputer);
+        showRoundTie(showPlayer);
       };
       break;
 
@@ -138,19 +168,29 @@ function playRound(playerSelection, computerSelection) {
       if (capitalizedComputerSelection === 'Paper') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} eats ${capitalizedComputerSelection}.`
         playerScore++;
+        setTimeout(showRoundWinner, 300, showPlayer);
+        setTimeout(showRoundLoser, 300, showComputer);
       } else if (capitalizedComputerSelection === 'Spock') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} poisons ${capitalizedComputerSelection}.`
         playerScore++;
+        setTimeout(showRoundWinner, 300, showPlayer);
+        setTimeout(showRoundLoser, 300, showComputer);
         // Handle Lizard losses
       } else if (capitalizedComputerSelection === 'Rock') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} crushes ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
       } else if (capitalizedComputerSelection === 'Scissors') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} decapitates ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
         // Handle Lizard Ties
       } else if (capitalizedComputerSelection === 'Lizard') {
         selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+        showRoundTie(showComputer);
+        showRoundTie(showPlayer);
       };
       break;
 
@@ -160,19 +200,29 @@ function playRound(playerSelection, computerSelection) {
       if (capitalizedComputerSelection === 'Rock') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} vaporizes ${capitalizedComputerSelection}.`
         playerScore++;
+        setTimeout(showRoundWinner, 300, showPlayer);
+        setTimeout(showRoundLoser, 300, showComputer);
       } else if (capitalizedComputerSelection === 'Scissors') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} smashes ${capitalizedComputerSelection}.`
         playerScore++;
+        setTimeout(showRoundWinner, 300, showPlayer);
+        setTimeout(showRoundLoser, 300, showComputer);
         // Handle Spock losses
       } else if (capitalizedComputerSelection === 'Lizard') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} poisons ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
       } else if (capitalizedComputerSelection === 'Paper') {
         selectionResult.innerText = `You lose! ${capitalizedComputerSelection} disproves ${capitalizedPlayerSelection}.`
         computerScore++;
+        setTimeout(showRoundWinner, 300, showComputer);
+        setTimeout(showRoundLoser, 300, showPlayer);
         // Handle Spock Ties
       } else if (capitalizedComputerSelection === 'Spock') {
         selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
+        showRoundTie(showComputer);
+        showRoundTie(showPlayer);
       };
       break;
   };
@@ -252,6 +302,8 @@ function newGame() {
   displayScore();
   removeImg(showPlayer);
   removeImg(showComputer);
+  removeShowRoundHalos(showPlayer);
+  removeShowRoundHalos(showComputer);
 
   displayResults.removeChild(results);
   displaySelection.removeChild(playerChoice);
@@ -294,3 +346,28 @@ function removeImg(parent) {
   };
 };
 
+
+// Add green halo around winning choice
+function showRoundWinner(player) {
+  player.classList.add('round-winner')
+};
+
+
+// Add red halo around losing choice
+function showRoundLoser(player) {
+  player.classList.add('round-loser')
+};
+
+
+// Add yellow halo around tie choices
+function showRoundTie(player) {
+  player.classList.add('round-tie')
+};
+
+
+// Remove all halos for a new round
+function removeShowRoundHalos(player) {
+  player.classList.remove('round-winner')
+  player.classList.remove('round-loser')
+  player.classList.remove('round-tie')
+};
