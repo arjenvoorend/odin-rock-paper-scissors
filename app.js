@@ -5,6 +5,7 @@ let playerSelection;
 let computerSelection;
 let roundWinner;
 
+const currentScoreDisplay = document.querySelector('#current-score');
 const gameBtns = document.querySelector('.game-buttons');
 const btns = document.querySelectorAll('button');
 const newGameBtnContainer = document.querySelector('.new-game-button-container');
@@ -232,6 +233,7 @@ function playRound(playerSelection, computerSelection) {
   renderImg('computer', computerSelection);
   displayScore();
   displaySelection.appendChild(selectionResult);
+  currentScoreDisplay.classList.remove('hidden');
 };
 
 
@@ -297,7 +299,8 @@ function newGame() {
 
   enableBtns();
   newGameBtnContainer.removeChild(newGameBtn);
-  displaySelection.removeChild(selectionResult)
+  displaySelection.removeChild(selectionResult);
+  currentScoreDisplay.classList.add('hidden');
 };
 
 
