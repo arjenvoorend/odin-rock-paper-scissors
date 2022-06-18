@@ -7,6 +7,7 @@ let roundWinner;
 
 const gameBtns = document.querySelector('.game-buttons');
 const btns = document.querySelectorAll('button');
+const newGameBtnContainer = document.querySelector('.new-game-button-container');
 const newGameBtn = document.createElement('button');
 newGameBtn.innerText = "New Game";
 newGameBtn.addEventListener('click', newGame);
@@ -272,7 +273,7 @@ function gameOver() {
 
     displayResults.appendChild(results)
     disableBtns();
-    gameBtns.appendChild(newGameBtn);
+    newGameBtnContainer.appendChild(newGameBtn);
   };
 };
 
