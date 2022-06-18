@@ -238,10 +238,10 @@ function playRound(playerSelection, computerSelection) {
 function displayPicks() {
   let playerValue = capitalize(playerSelection)
   let computerValue = capitalize(computerSelection)
-  playerChoice.innerText = `Your pick: ${playerValue}`
-  computerChoice.innerText = `Computer pick: ${computerValue}`
-  displaySelection.appendChild(playerChoice)
-  displaySelection.appendChild(computerChoice);
+  // playerChoice.innerText = `Your pick: ${playerValue}`
+  // computerChoice.innerText = `Computer pick: ${computerValue}`
+  // displaySelection.appendChild(playerChoice)
+  // displaySelection.appendChild(computerChoice);
   displaySelection.appendChild(selectionResult);
 };
 

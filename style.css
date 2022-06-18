@@ -22,10 +22,19 @@ body {
   height: auto;
 }
 
+#display-selection {
+  height: 50px;
+}
+
+#display-selection p {
+  font-size: 32px;
+  font-weight: bold;
+}
+
 .game-display {
-  height: 480px;
+  height: 300px;
   width: 720px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,6 +59,12 @@ body {
 
 .round-tie {
   box-shadow: 0 0 50px yellow;
+}
+
+#player,
+#game-intro,
+#computer {
+  margin-bottom: 2em;
 }
 
 #show-player,
