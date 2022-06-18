@@ -316,7 +316,7 @@ function game() {
 
 
 // Render initial score to the screen
-displayScore();
+// displayScore();
 
 
 // Render img to the screen
