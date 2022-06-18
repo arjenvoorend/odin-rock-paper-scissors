@@ -76,7 +76,12 @@ function playRound(playerSelection, computerSelection) {
     // Handle player chooses Rock
     case ('Rock'):
       // Handle Rock wins
-      if (capitalizedComputerSelection === 'Scissors' || capitalizedComputerSelection === 'Lizard') {
+      if (capitalizedComputerSelection === 'Scissors') {
+        selectionResult.innerText = `You win! ${capitalizedPlayerSelection} crushes ${capitalizedComputerSelection}.`
+        playerScore++;
+        showRoundWinner(showPlayer);
+        showRoundLoser(showComputer);
+      } else if (capitalizedComputerSelection === 'Lizard') {
         selectionResult.innerText = `You win! ${capitalizedPlayerSelection} crushes ${capitalizedComputerSelection}.`
         playerScore++;
         showRoundWinner(showPlayer);
@@ -125,8 +130,8 @@ function playRound(playerSelection, computerSelection) {
         showRoundWinner(showComputer);
         showRoundLoser(showPlayer);
         // Handle Paper Ties
-      } else if (capitalizedComputerSelection === 'Paper}') {
-        selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`;
+      } else if (capitalizedComputerSelection === 'Paper') {
+        selectionResult.innerText = `It's a tie! You both chose ${capitalizedPlayerSelection}.`
         showRoundTie(showComputer);
         showRoundTie(showPlayer);
       };
