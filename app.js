@@ -64,13 +64,13 @@ function computerPlay() {
 
 // Play a single round of Rock, Paper, Scissors, Lizard, Spock
 function playRound(playerSelection, computerSelection) {
-  let capitalizedPlayerSelection = capitalize(playerSelection);
-  let capitalizedComputerSelection = capitalize(computerSelection);
-
   removeImg(showPlayer);
   removeImg(showComputer);
   removeShowRoundHalos(showPlayer);
   removeShowRoundHalos(showComputer);
+
+  let capitalizedPlayerSelection = capitalize(playerSelection);
+  let capitalizedComputerSelection = capitalize(computerSelection);
 
   switch (capitalizedPlayerSelection) {
     // Handle player chooses Rock
@@ -313,10 +313,6 @@ function game() {
 
   gameOver();
 };
-
-
-// Render initial score to the screen
-// displayScore();
 
 
 // Render img to the screen
