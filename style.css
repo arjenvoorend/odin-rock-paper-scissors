@@ -7,13 +7,18 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
+  flex-direction: column;
+}
+
+.title-heading {
+  text-align: center;
 }
 
 .game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10em auto;
+  margin: 2em auto;
   width: 1080px;
 }
 
@@ -100,6 +105,10 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+.button-disabled:hover {
+  cursor: not-allowed;
 }
 
 .game-info-container {
