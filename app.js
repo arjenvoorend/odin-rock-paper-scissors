@@ -231,19 +231,6 @@ function playRound(playerSelection, computerSelection) {
   renderImg('player', playerSelection);
   renderImg('computer', computerSelection);
   displayScore();
-  displayPicks();
-};
-
-
-// Display user and computer picks
-function displayPicks() {
-  let playerValue = capitalize(playerSelection)
-  let computerValue = capitalize(computerSelection)
-  // playerChoice.innerText = `Your pick: ${playerValue}`
-  // computerChoice.innerText = `Computer pick: ${computerValue}`
-  // displaySelection.appendChild(playerChoice)
-  // displaySelection.appendChild(computerChoice);
-  displaySelection.appendChild(selectionResult);
 };
 
 
@@ -271,7 +258,7 @@ function gameOver() {
       selectionResult.innerText = "Game over, it's a tie!"
     };
 
-    displayResults.appendChild(results)
+    // displayResults.appendChild(results)
     disableBtns();
     newGameBtnContainer.appendChild(newGameBtn);
   };
@@ -307,13 +294,8 @@ function newGame() {
   removeShowRoundHalos(showPlayer);
   removeShowRoundHalos(showComputer);
 
-  displayResults.removeChild(results);
-  displaySelection.removeChild(playerChoice);
-  displaySelection.removeChild(computerChoice);
-  displaySelection.removeChild(selectionResult);
-
   enableBtns();
-  gameBtns.removeChild(newGameBtn);
+  newGameBtnContainer.removeChild(newGameBtn);
 };
 
 
