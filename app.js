@@ -281,6 +281,7 @@ function disableBtns() {
 function enableBtns() {
   if (newGame) {
     btns.forEach(button => button.disabled = false)
+    btns.forEach(button => button.classList.remove('button-disabled'))
   };
 };
 
